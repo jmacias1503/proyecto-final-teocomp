@@ -30,27 +30,27 @@ class MaquinaTuring:
                 actual, simbolo_leido, simbolo_escribir, direccion, siguiente = partes
                 this.transiciones[(actual, simbolo_leido)] = (simbolo_escribir, direccion, siguiente)
 
-    def dibujar_grafo(this):
-        dot = graphviz.Digraph(comment='Maquina de Turing')
-        dot.attr(rankdir='LR')
-        
-        # Add states
-        for estado in this.estados:
-            if estado in this.estados_aceptacion:
-                dot.node(estado, shape='doublecircle')
-            else:
-                dot.node(estado)
-        
-        # Add transitions
-        for (actual, simbolo), (escribir, direccion, siguiente) in this.transiciones.items():
-            label = f"{simbolo}/{escribir},{direccion}"
-            dot.edge(actual, siguiente, label=label)
-        
-        dot.node('start', shape='point')
-        dot.edge('start', this.estado_inicial)
-        
-        dot.render(f'grafo_{this.nombre_archivo}', format='png', cleanup=True)
-        print(f"Grafo generado como 'grafo_{this.nombre_archivo}.png'")
+    #def dibujar_grafo(this):
+    #    dot = graphviz.Digraph(comment='Maquina de Turing')
+    #    dot.attr(rankdir='LR')
+    #    
+    #    # Add states
+    #    for estado in this.estados:
+    #        if estado in this.estados_aceptacion:
+    #            dot.node(estado, shape='doublecircle')
+    #        else:
+    #            dot.node(estado)
+    #    
+    #    # Add transitions
+    #    for (actual, simbolo), (escribir, direccion, siguiente) in this.transiciones.items():
+    #        label = f"{simbolo}/{escribir},{direccion}"
+    #        dot.edge(actual, siguiente, label=label)
+    #    
+    #    dot.node('start', shape='point')
+    #    dot.edge('start', this.estado_inicial)
+    #    
+    #    dot.render(f'grafo_{this.nombre_archivo}', format='png', cleanup=True)
+    #    print(f"Grafo generado como 'grafo_{this.nombre_archivo}.png'")
 
     def mostrar_cinta(this, cinta, cabeza, estado):
         os.system('cls' if os.name == 'nt' else 'clear')
@@ -119,7 +119,7 @@ if __name__ == '__main__':
 
     mt = MaquinaTuring(archivo_nombre)
     print("\nGenerando grafo de la maquina...")
-    mt.dibujar_grafo()
+    #mt.dibujar_grafo()
     
     palabra = input('Ingresa la palabra o expresion a validar: ').strip()
     aceptada, cinta_final = mt.simular(palabra)
