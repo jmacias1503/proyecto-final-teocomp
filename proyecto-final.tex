@@ -1,0 +1,102 @@
+\input{preamble.tex}
+\usepackage{csquotes}
+\usepackage[style=apa]{biblatex}
+\addbibresource{./main-sources.bib}
+\hypersetup{
+	pdftitle={Proyecto Final},
+	colorlinks=false,
+}
+\setlength{\headheight}{61.25554pt}
+\addtolength{\topmargin}{-49.25554pt}
+\title{Proyecto Final}
+\author{Mac\'ias Fonseca Alejandro \and Mata Guerra David}
+\date{28 de mayo de 2025}
+\begin{document}
+\begin{titlepage}
+\thispagestyle{fancy}
+\begin{center}
+{\huge Universidad Aut\'onoma de Quer\'etaro}\\
+{\large Facultad de Inform\'atica}\\
+\vspace{1em}
+Ingenier\'ia de Software\\
+Teor\'ia de la Computaci\'on\\
+Profesor: Dr. Fidel Gonz\'alez Guti\'errez\\
+\vspace{3em}
+\begin{tabular}{|c|c|c|}
+\hline	
+Equipo & Integrantes & Proyecto\\
+\hline	
+6 & \theauthor & 7\\
+\hline
+\end{tabular}
+~\\
+\vspace{3em}
+\begin{tabular}{|c|l|c|c|}
+  \hline
+  \multicolumn{2}{|c|}{\textbf{Aspectos Por Evaluar}} & \textbf{Puntuaci\'on} & \hspace{2cm} ~\\
+  \hline
+  1 & Modelo de M\'aquina & 2 & ~\\
+  \hline
+  2 & Programa & 2 & ~\\
+  \hline
+  3 & Verificaci\'on del Programa & 2 & ~\\
+  \hline
+  4 & Exposici\'on & 2 & ~\\
+  \hline
+  5 & Preguntas/Respuestas & 2 & ~\\
+  \hline
+  \multicolumn{3}{|c|}{Calificaci\'on} & ~\\
+  \hline
+\end{tabular}
+\end{center}
+\end{titlepage}
+\tableofcontents
+\section{Plantemiento del Problema}
+\subsection{Descripci\'on}
+Se desea implementar un modelo de la m\'aquina de Turing que sea capaz de aceptar cualquier sextupla, con su enfoque principal en la aceptaci\'on de pal\'indromes
+\subsection{Definici\'on de los Elementos}
+Una m\'aquina de Turing es un modelo matem\'atico que consiste en los siguientes elementos:
+\begin{itemize}
+	\item Un alfabeto finito de s\'imbolos de entrada $\Sigma$.
+	\item Un alfabeto finito de s\'imbolos de salida $\Gamma$.
+	\item Un conjunto finito de estados $Q$.
+	\item Un conjunto de estados de aceptaci\'on $F \subseteq Q$.
+	\item Un estado inicial $q_0$.
+	\item Una cinta infinita dividida en celdas, cada una de las cuales puede contener un s\'imbolo del alfabeto.
+	\item Un cabezal de lectura/escritura que puede moverse a la izquierda o a la derecha sobre la cinta.
+	\item Una funci\'on de transici\'on que define el comportamiento de la m\'aquina en funci\'on del estado actual y el s\'imbolo leido.
+\end{itemize}
+\parencite{cohen1986}
+\subsection{Modelo}
+El razonamiento para crear el modelo fue el siguiente, basado en \textcite{palturing2017}:
+\begin{enumerate}
+  \item Se lee el primer caracter, y se escribe su espacio en blanco.
+  \item El cabeza se mueve a la derecha hasta encontrar el primer espacio en blanco.
+  \item El cabezal se mueve a la izquierda
+  \item Si el caracter leido es igual al primer caracter, se escribe un espacio en blanco y se mueve a la izquierda hasta encontrar el primer espacio en blanco.
+  \item Se repite el proceso hasta que se hayan eliminado todos los caracteres.
+\end{enumerate}
+Para ver graficamente el modelo, ver la Figura \ref{fig:turingmodel}.
+\begin{figure}[h]
+  \label{fig:turingmodel}
+\begin{center}
+  \includegraphics[width=0.3\textwidth,angle=90]{./turing-final.jpg}
+\end{center}
+\caption{Modelo de la M\'aquina de Turing}
+\end{figure}
+\section{Programa del Modelo de la M\'aquina}
+\subsection{C\'odigo Fuente}
+\lstinputlisting[language=Python, caption=Programa de M\'aquina de Turing]{./main2.py}
+\subsection{Ejemplo de Ejecuci\'on}
+Para el caso de los pal\'indromes, se puede probar con la palabra ``abba'', que es un pal\'indrome. El programa leer\'a la palabra, eliminar\'a los caracteres y al final quedar\'a un espacio en blanco, lo cual indica que la palabra es un pal\'indrome. Ver la Figura \ref{fig:ejecucion} para ver un ejemplo de ejecuci\'on del programa.
+\begin{figure}[h]
+  \label{fig:ejecucion}
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]{./ejecucion.png}
+  \end{center}
+  \caption{Ejemplo de Ejecuci\'on del Programa}
+\end{figure}
+\section{Conclusiones}
+Una m\'aquina de Turing, afin\'andola correctamente, da la puerta a computaci\'on de todo problema computable, por lo cual entender su funcionamiento es crucial para el entendimiento de la computaci\'on. En este proyecto se ha implementado un modelo de m\'aquina de Turing que acepta pal\'indromes, lo cual demuestra la capacidad de la m\'aquina para resolver problemas computacionales complejos.
+\printbibliography
+\end{document}
