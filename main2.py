@@ -65,8 +65,8 @@ class MaquinaTuring:
 
     def simular(this, cadena_entrada, pasos_maximos=10000):
         cinta = list(cadena_entrada)
-        cinta = [this.blanco] + cinta + [this.blanco]
-        cabeza = 1
+        cinta = cinta + [this.blanco]
+        cabeza = 0
         estado_actual = this.estado_inicial
         pasos = 0
 
