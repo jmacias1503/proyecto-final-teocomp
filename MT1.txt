@@ -1,0 +1,23 @@
+a b
+a b B
+0 1 2 3 4 5 6 7
+0
+6
+0 a B R 1
+0 b B R 2
+0 B B R 6
+1 a a R 1
+1 b b R 1
+1 B B L 3
+2 a a R 2
+2 b b R 2
+2 B B L 4
+3 a B L 5
+3 b b R 7
+3 B B R 6
+4 a a R 7
+4 b B L 5
+4 B B R 6
+5 a a L 5
+5 b b L 5
+5 B B R 0
